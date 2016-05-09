@@ -1,0 +1,20 @@
+.main {
+    margin-top:40px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+form.redeem {
+    margin-top:20px;
+}
+
+.error {
+    display:block;
+    padding:10px;
+    color:white;
+    font-weight:bold;
+    background-color: #00047f;
+}
+
+.flashes {
+    padding:10px;
+}

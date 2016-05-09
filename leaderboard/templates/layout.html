@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/static/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css" />
+
+    <title>SPO Workshop</title>
+</head>
+<body>
+
+    <div class="container main">
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <p class="flashes bg-info">
+            {% for message in messages %}
+                {{ message }}<br />
+            {% endfor %}
+            </p>
+          {% endif %}
+        {% endwith %}
+
+        {% block body %}{% endblock %}
+
+    </div>
+
+</body>
+</html>
