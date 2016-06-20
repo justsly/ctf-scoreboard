@@ -6,10 +6,23 @@ class Member(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True)
     points = db.Column(db.Integer)
+    password = db.Column(db.String(60))
 
     def __init__(self, name=None, points=0):
         self.name = name
         self.points = points
+
+    def is_authenticated(self):
+        return True
+ 
+    def is_active(self):
+        return True
+ 
+    def is_anonymous(self):
+        return False
+ 
+    def get_id(self):
+        return self.id
 
     def __repr__(self):
         return '<User %r, %r points>' % (self.name, self.points)
