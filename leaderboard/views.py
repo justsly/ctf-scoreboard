@@ -1,6 +1,7 @@
 import re
+import operator
 
-from flask import render_template, Blueprint, request, redirect, flash
+from flask import render_template, Blueprint, request, redirect, flash, abort
 from flask_login import login_user, login_required, current_user, logout_user
 from flask_bcrypt import Bcrypt
 from leaderboard.model import db, Member, Code, CodeRedeem, QuizQuestion, QuizAnswer
@@ -8,13 +9,20 @@ from leaderboard.model import db, Member, Code, CodeRedeem, QuizQuestion, QuizAn
 frontend = Blueprint('frontend', __name__)
 bcrypt = Bcrypt()
 
+HINT_BUY_PRICE = 40
+
 @frontend.route('/')
 def index():
     """ show leaderboard """
-    members = Member.query.order_by("points desc")
+    members = Member.query.all()
+
+    # sort by points
+    members.sort(key=operator.methodcaller('get_points'))
+
     qlen = 0
     if not current_user.is_anonymous():
         qlen = len(get_available_questions(current_user))
+
     return render_template('index.html', leaderboard=members, qlen=qlen)
 
 @frontend.route('/login', methods=['GET', 'POST'])
@@ -73,6 +81,41 @@ def redeem():
         return redirect('/')
 
     return render_template('redeem.html')
+
+@frontend.route('/buyhint', methods=['GET', 'POST'])
+@login_required
+def buy_hint():
+    """ Buy hints """
+    challenges = [
+        {
+            'name':'Challenge #1',
+            'hint':'Foo bar'
+        },
+        {
+            'name':'Challenge #2',
+            'hint':'Foo bar'
+        }
+    ]
+
+    if request.method == 'POST':
+        try:
+            buy_index = int(request.form.get('buy', -1))
+        except:
+            return abort(403)
+
+        if buy_index == -1 or buy_index < 0 or buy_index > (len(challenges)-1):
+            return abort(403)
+
+        if (current_user.get_points() - HINT_BUY_PRICE) < 0:
+            return render_template('buy_hint.html', challenges=challenges, error='You have not enough points to buy a hint')
+
+        current_user.points_handicap += HINT_BUY_PRICE
+        db.session.add(current_user)
+        db.session.commit()
+
+        flash('Hint: %s' % challenges[buy_index]['hint'])
+
+    return render_template('buy_hint.html', challenges=challenges)
 
 @frontend.route('/quiz', methods=['GET', 'POST'])
 @login_required

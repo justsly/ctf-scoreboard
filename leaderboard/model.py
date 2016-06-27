@@ -10,6 +10,8 @@ class Member(db.Model):
     quiz_answers = db.relationship('QuizAnswer', back_populates='member')
     code_redeems = db.relationship('CodeRedeem', back_populates='member')
 
+    points_handicap = db.Column(db.Integer, default=0)
+
     def __init__(self, name=None):
         self.name = name
 
@@ -50,7 +52,7 @@ class Member(db.Model):
         return points
 
     def get_points(self):
-        return self.get_quiz_points() + self.get_flag_points()
+        return self.get_quiz_points() + self.get_flag_points() - self.points_handicap
 
 class Code(db.Model):
     id = db.Column(db.Integer, primary_key=True)

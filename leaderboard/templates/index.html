@@ -17,7 +17,7 @@
                 <tr>
                     <th style="width:5%">.pos</th>
                     <th>.name</th>
-                    <th style="width:25%">.points (flags | quiz)</th>
+                    <th style="width:33%">.points (flags | quiz | buy)</th>
                 </tr>
             </thead>
 
@@ -26,7 +26,7 @@
                 <tr>
                     <td>0x{{ '%02x'|format(loop.index) }}</td>
                     <td>{{ l.name }}</td>
-                    <td style="text-align:left">{{ l.get_points() }} ({{ l.get_flag_points() }} | {{ l.get_quiz_points() }})</td>
+                    <td style="text-align:left">{{ l.get_points() }} ({{ l.get_flag_points() }} | {{ l.get_quiz_points() }} | -{{ l.points_handicap }})</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -43,6 +43,7 @@
                 <a href="/quiz">Start quiz ({{qlen}})</a> |
                 <a href="/quiz/show">Show answers</a> |
                 <a href="/redeem">Redeem points</a> |
+                <a href="/buyhint">Buy hint</a> |
                 <a href="/logout">Logout</a>
             {% else %}
                 <a href="/login">Login</a>

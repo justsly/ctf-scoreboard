@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<script type="text/javascript">
+    function validate() {
+        if(!confirm('Are you sure to buy a hint? This can not be undone'))
+            return false;
+
+        return true;
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Buy hint</h2>
+        <a href="/">&laquo; back</a>
+
+        <form class="form-horizontal redeem" action="/buyhint" method="post">
+
+          {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>.challenge</th>
+                        <th>.buy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for challenge in challenges %}
+                    <tr>
+                        <td>{{challenge.name}}</td>
+                        <td><button class="btn btn-warning" type="submit" value="{{loop.index0}}" name="buy" onclick="return validate()">buy</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}
