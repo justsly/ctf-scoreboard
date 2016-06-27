@@ -5,7 +5,7 @@ import sys
 import click
 
 
-from flask import Flask, request, Response
+from flask import Flask, request, Response, abort, session
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_login import LoginManager
@@ -56,6 +56,20 @@ def user_loader(user_id):
     :param unicode user_id: user_id (email) user to retrieve
     """
     return Member.query.get(user_id)
+
+@app.before_request
+def csrf_protect():
+    if request.method == "POST":
+        token = session.pop('_csrf_token', None)
+        if not token or token != request.form.get('_csrf_token'):
+            abort(403)
+
+def generate_csrf_token():
+    if '_csrf_token' not in session:
+        session['_csrf_token'] = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(32))
+    return session['_csrf_token']
+
+app.jinja_env.globals.update(csrf_token=generate_csrf_token)
 
 @app.cli.command()
 def initdb():
@@ -114,5 +128,3 @@ def load_questions(filename):
 
         db.session.commit()
         print('\nImport finished.')
-
-app.jinja_env.globals.update(int=int)

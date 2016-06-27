@@ -10,6 +10,7 @@
         <p style="display:block;margin:20px 0;">There are <strong>{{questions_len}}</strong> new questions available. You can only submit them once, choice wisely.</p>
 
         <form class="form-horizontal redeem" action="/quiz" method="post">
+            <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
 
           {% if error %}<p class="error">{{ error }}</p>{% endif %}
 

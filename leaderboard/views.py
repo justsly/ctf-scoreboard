@@ -20,8 +20,11 @@ def index():
     members.sort(key=operator.methodcaller('get_points'))
 
     qlen = 0
-    if not current_user.is_anonymous():
-        qlen = len(get_available_questions(current_user))
+    try:
+        if not current_user.is_anonymous():
+            qlen = len(get_available_questions(current_user))
+    except:
+        pass
 
     return render_template('index.html', leaderboard=members, qlen=qlen)
 

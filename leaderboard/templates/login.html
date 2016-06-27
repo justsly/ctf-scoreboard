@@ -8,6 +8,7 @@
         <a href="/">&laquo; back</a>
 
         <form class="form-horizontal redeem" action="/login" method="post">
+            <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
 
           {% if error %}<p class="error">{{ error }}</p>{% endif %}
 
