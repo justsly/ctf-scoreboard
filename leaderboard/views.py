@@ -63,8 +63,6 @@ def redeem():
         if CodeRedeem.query.filter(CodeRedeem.member_id == m.id).filter(CodeRedeem.code_id == c.id).first():
             return render_template('redeem.html', error='Code already redeemed')
 
-        m.points = Member.points + c.points
-
         cr = CodeRedeem(c, m)
         db.session.add(cr)
 
@@ -80,9 +78,7 @@ def redeem():
 @login_required
 def quiz():
     """ Show and save quiz questions """
-    flag_count = current_user.codesr.count()
-    limit = 10 + (flag_count * 10)
-    questions = get_available_questions(current_user, limit)
+    questions = get_available_questions(current_user)
 
     if request.method == 'POST':
         for val in request.form:
@@ -103,8 +99,21 @@ def quiz():
 
     return render_template('quiz.html', questions=questions, questions_len=len(questions))
 
+@frontend.route('/quiz/show', methods=['GET'])
+@login_required
+def show_quiz():
+    """ Show questions and answers """
+    answers = current_user.quiz_answers
 
-def get_available_questions(user, limit=10):
+    return render_template('quiz_show.html', answers=answers)
+
+def get_available_questions(user, limit=None):
+
+    if not limit:
+        print(len(user.code_redeems))
+        flag_count = len(user.code_redeems)
+        limit = 10 + (flag_count * 10)
+
     # always ensure same order
     questions = QuizQuestion.query.order_by(QuizQuestion.id).limit(limit)
 

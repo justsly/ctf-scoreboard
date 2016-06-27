@@ -1,0 +1,30 @@
+
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Your quiz answers!</h2>
+        <p><strong>Bold</strong> = your answer; <span class="answer-correct">Green</span> = correct answer</p>
+        <a href="/">&laquo; back</a>
+
+          {% for answer in answers %}
+          
+            <div class="question">
+                <h3>{{answer.question.text}}</h3>
+                <ul>
+                    {% for a2 in answer.question.answers %}
+                        <li>
+                            <span class="{% if answer.solution == loop.index0  %}bold{% endif %} {% if answer.question.solution == loop.index0  %}answer-correct{% endif %}">{{a2}}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+          {% endfor %}
+
+          <div style="clear:both;margin-bottom:150px;"></div>
+    </div>
+</div>
+
+{% endblock %}

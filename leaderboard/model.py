@@ -5,12 +5,13 @@ db = SQLAlchemy()
 class Member(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True)
-    points = db.Column(db.Integer)
     password = db.Column(db.String(60))
 
-    def __init__(self, name=None, points=0):
+    quiz_answers = db.relationship('QuizAnswer', back_populates='member')
+    code_redeems = db.relationship('CodeRedeem', back_populates='member')
+
+    def __init__(self, name=None):
         self.name = name
-        self.points = points
 
     def is_authenticated(self):
         return True
@@ -25,10 +26,10 @@ class Member(db.Model):
         return self.id
 
     def __repr__(self):
-        return '<User %r, %r points>' % (self.name, self.points)
+        return '<User %r, %r points>' % (self.name, self.get_points())
 
     def get_quiz_points(self):
-        answers = self.qanswers
+        answers = self.quiz_answers
 
         points = 0
 
@@ -39,7 +40,7 @@ class Member(db.Model):
         return points
 
     def get_flag_points(self):
-        flags = self.codesr
+        flags = self.code_redeems
 
         points = 0
 
@@ -56,6 +57,8 @@ class Code(db.Model):
     code = db.Column(db.String(20), unique=True)
     points = db.Column(db.Integer)
 
+    code_redeems = db.relationship('CodeRedeem', back_populates='code', cascade='all, delete-orphan')
+
     def __init__(self, code=None, points=0):
         self.code = code
         self.points = points
@@ -69,10 +72,10 @@ class CodeRedeem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     code_id = db.Column(db.Integer, db.ForeignKey('code.id'))
-    code = db.relationship('Code', backref=db.backref('codes', lazy='dynamic'))
+    code = db.relationship('Code', back_populates='code_redeems')
 
     member_id = db.Column(db.Integer, db.ForeignKey('member.id'))
-    member = db.relationship('Member', backref=db.backref('codesr', lazy='dynamic'))
+    member = db.relationship('Member', back_populates='code_redeems')
 
     def __init__(self, code, member):
         self.code = code
@@ -86,6 +89,8 @@ class QuizQuestion(db.Model):
     answers = db.Column(db.PickleType)
     solution = db.Column(db.Integer)
 
+    quiz_answers = db.relationship('QuizAnswer', back_populates='question', cascade='all, delete-orphan')
+
     def __init__(self, text, answers, solution):
         self.text = text
         self.answers = answers
@@ -97,10 +102,10 @@ class QuizAnswer(db.Model):
     solution = db.Column(db.Integer)
 
     question_id = db.Column(db.Integer, db.ForeignKey('quiz_question.id'), primary_key=True)
-    question = db.relationship('QuizQuestion', backref=db.backref('qanswers', lazy='dynamic'))
+    question = db.relationship('QuizQuestion', back_populates='quiz_answers')
 
     member_id = db.Column(db.Integer, db.ForeignKey('member.id'), primary_key=True)
-    member = db.relationship('Member', backref=db.backref('qanswers', lazy='dynamic'))
+    member = db.relationship('Member', back_populates='quiz_answers')
 
     def __init__(self, question, member, solution):
         self.question = question

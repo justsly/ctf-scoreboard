@@ -12,7 +12,7 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from werkzeug.exceptions import HTTPException
 
-from .model import db, Member, Code, QuizQuestion, QuizAnswer
+from .model import db, Member, Code, CodeRedeem, QuizQuestion, QuizAnswer
 from .views import frontend
 
 app = Flask(__name__)
@@ -43,6 +43,7 @@ class ModelViewProtected(ModelView):
 admin = Admin(app, name='leaderboard', template_mode='bootstrap3')
 admin.add_view(ModelViewProtected(Member, db.session))
 admin.add_view(ModelViewProtected(Code, db.session))
+admin.add_view(ModelViewProtected(CodeRedeem, db.session))
 admin.add_view(ModelViewProtected(QuizQuestion, db.session))
 admin.add_view(ModelViewProtected(QuizAnswer, db.session))
 
@@ -104,6 +105,8 @@ def load_questions(filename):
     with open(filename) as data_file:
         data = json.load(data_file)
 
+        random.shuffle(data)
+
         for q in data:
             question = QuizQuestion(q['text'], q['answers'], q['solution'])
             db.session.add(question)
@@ -111,3 +114,5 @@ def load_questions(filename):
 
         db.session.commit()
         print('\nImport finished.')
+
+app.jinja_env.globals.update(int=int)

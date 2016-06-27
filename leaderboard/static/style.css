@@ -26,3 +26,9 @@ form.redeem {
 .question ul {
     list-style:none;
 }
+.answer-correct {
+    color: #06ff34;
+}
+.bold {
+    font-weight:bold;
+}

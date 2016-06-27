@@ -40,7 +40,8 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="pull-right">
             {% if session.user_id %}
-                <a href="/quiz">Start next quiz ({{qlen}})</a> |
+                <a href="/quiz">Start quiz ({{qlen}})</a> |
+                <a href="/quiz/show">Show answers</a> |
                 <a href="/redeem">Redeem points</a> |
                 <a href="/logout">Logout</a>
             {% else %}

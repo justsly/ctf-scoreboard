@@ -1,23 +1,390 @@
 [
     {
-        "text":"Frage 1",
+        "text":"Die Ärzteserie „Private Practice“ hat sich mit Erfolg ihr eigenes Publikum erarbeitet. Die Hauptfigur Addison Montgomery (Kate Walsh) stammt eigentlich aus einer anderen Produktion. Welche ist das?",
         "answers": [
-            "Falsche Antwort 1",
-            "Falsche Antwort 2",
-            "Richtige Antwort 2",
-            "Falsche Antwort 3"
+            "E.R. Emergency Room",
+            "Grey's Anatomy",
+            "Hawthorne"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"In Karate, welche Farbe folgt nach dem gelben Gürtel?",
+        "answers": [
+            "Orange",
+            "Rot",
+            "Grün",
+            "Blau"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Was versteht man unter Scareware?",
+        "answers": [
+            "Ein Virus, der den Nutzer beim Hochfahren überrascht",
+            "Scareware bezeichnet einen Bildschirmschoner, der PC-Nutzer erschrecken soll.",
+            "Programme, die sich als Virenschutz ausgeben, jedoch in Wirklichkeit selbst Schadsoftware enthalten."
         ],
         "solution": 2
     },
     {
-        "text":"Frage 2",
+        "text":"Längst nicht mehr das Fortbewegungsmittel der Wahl, aber nach wie vor bei abenteuerlustigen Jugendlichen mit kleiner Reisekasse beliebt- auf Englisch heißt es:",
         "answers": [
-            "Falsche Antwort 1",
-            "Falsche Antwort 2",
-            "Richtige Antwort 2",
-            "Falsche Antwort 3"
+            "to hitchhike",
+            "to tramp",
+            "to with-drive",
+            "to taxi-drive"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Auf zwei Kinofilme hat es die abgeschlossene Erfolgsserie „Sex and the City“ gebracht. Welchen Beruf hat eigentlich Hauptfigur Carrie Bradshaw?",
+        "answers": [
+            "Kolumnistin",
+            "Anwältin",
+            "Stylistin",
+            "Journalistin"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Welches der folgenden Wörter wird im Englischen nicht beziehungsweise anders verwendet als im Deutschen?",
+        "answers": [
+            "Callcenter",
+            "Smoking",
+            "Bodybuilding",
+            "Skateboarding"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"Können bei Experimenten am Europäischen Kernforschungszentrum Cern bei Genf- dort steht der leistungsfähigste Teilchenbeschleuniger der Welt- schwarze Löcher entstehen?",
+        "answers": [
+            "Ja",
+            "Nein",
+            "Das wissen die Forscher selbst nicht so genau"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Die damalige Bundesverbraucherministerin Ilse Aigner stelle 2011 eine Software vor, die digitale Daten mit einem Verfallsdatum versehen soll. Wie wird diese Software im Volksmund genannt?",
+        "answers": [
+            "Digitaler Tintenkiller",
+            "Digitales Löschpapier",
+            "Digitaler Radiergummi",
+            "Digitaler Reh-Mover"
         ],
         "solution": 2
+    },
+    {
+        "text":"Unter welchem Markenname ist Acetylsalicylsäure bekannt?",
+        "answers": [
+            "Aspirin",
+            "Ibuprofen",
+            "Thomapyrin",
+            "Zitronensäure"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Gegen welches Team gewann Chelsea im Finale der UEFA Champions League im Jahr 2012?",
+        "answers": [
+            "Werder Bremen",
+            "Borussia Dortmund",
+            "Bayern München"
+        ],
+        "solution": 2
+    },
+    {
+        "text":"Harrison Ford heiratete 2010 welche Schauspielerin?",
+        "answers": [
+            "Calista Flockhart",
+            "Ellenor Frutt",
+            "Courteney Cox",
+            "Er heiratete nicht"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Was ist die Aufgabe eines Rootkits?",
+        "answers": [
+            "Ein Rootkit ist der Teil eines Anti-Viren-Programms, der zentrale Systembausteine schützt.",
+            "Eine Windows-Option, die Zugang zu geheimen Systemfehlen erlaubt.",
+            "Mit seiner Hilfe macht sich ein Schadprogramm im Computer unsichtbar."
+        ],
+        "solution": 2
+    },
+    {
+        "text":"In welcher Religion ist der Freitag ein Ruhetag?",
+        "answers": [
+            "Hinduismus",
+            "Islam",
+            "Judentum"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"Welcher deutsche Sportler schrieb 2003 eine Autobiographie mit dem Titel „Augenblick, verweile doch...“?",
+        "answers": [
+            "Boris Becker",
+            "Franz Beckenbauer",
+            "Anni Friesinger"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Es ist nicht immer leicht, passende und abwechslungsreiche Namen für die einzelnen Episoden zu finden. Eine Serie behilft sich damit, dass fast jede Episode gleich anfängt: „Meine Vorbilder“, „Mein Held“, „ Mein letzter Tag“. Welches Format nutzt diesen Kniff?",
+        "answers": [
+            "Dr. House",
+            "Scrubs",
+            "Monk"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"Der Moderator einer großen Fernsehsendung heißt im englische Raum ...",
+        "answers": [
+            "Showmaster",
+            "Talkmaster",
+            "Host"
+        ],
+        "solution": 2
+    },
+    {
+        "text":"Mit welchem Browsererweiterung kann ich verhindern, beim Surfen ein Schadprogramm aufzulesen?",
+        "answers": [
+            "Adblock Plus",
+            "NoScript",
+            "Browserbrain",
+            "Privacy Badger"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"In welchem Jahr biss Mike Tyson ein Stück aus dem rechten Ohr von Evander Holyfield während eines Boxkampfes ab?",
+        "answers": [
+            "1996",
+            "1997",
+            "1998",
+            "1337"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"Was symbolisieren die verschlungenen fünf Ringe der olympischen Fahne? Die fünf ...",
+        "answers": [
+            "Disziplinen",
+            "Finger einer Hand",
+            "Jahreszeiten",
+            "Kontinente"
+        ],
+        "solution": 3
+    },
+    {
+        "text":"Wo befindet sich der höchste Punkt der Erde mit WLAN-Zugang?",
+        "answers": [
+            "Im Burj Khalifa in Dubai",
+            "Auf der chinesischen Mauer",
+            "Im Himalaja-Gebirge"
+        ],
+        "solution": 2
+    },
+    {
+        "text":"Welches der folgenden Wörter ist ein falscher Anglizismus?",
+        "answers": [
+            "Boygroup",
+            "Streetworker",
+            "Callgirl"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"Produzent Jerry Bruckheimer hat mit „CSI“ so viel Erfolg, dass die Serie gleich zwei Ableger produziert hat. Was für eine Art Job haben die Protagonisten? Sie sind…",
+        "answers": [
+            "Forensiker",
+            "Gerichtsmediziner",
+            "Mordkommisare"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Besonders beeindruckend lässt es sich als Kunstkenner: Wer ist der teuerste deutsche noch lebende Maler?",
+        "answers": [
+            "Gerhard Richter",
+            "Manuel Neuer",
+            "Neo Rauch",
+            "Georg Baselitz"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Wie lang in Minuten ist die Spielzeit eines American Football Spiels?",
+        "answers": [
+            "45",
+            "60",
+            "90"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"Im türkiesfarbenen Wasser stocherten in den Karl-May-Filmen die Brüder Winnetous etwas unmotiviert nach Fischen. Die Rede ist ...",
+        "answers": [
+            "vom Fluss Pliva, Bosnien und Herzegowina",
+            "von der Costa Smeralda, Sardinien",
+            "von den Seen von Plitvice, Koratien"
+        ],
+        "solution": 2
+    },
+    {
+        "text":"Wie lautet die hexadezimale Repräsentation von dezimal 183?",
+        "answers": [
+            "A7",
+            "7A",
+            "B7"
+        ],
+        "solution": 2
+    },
+    {
+        "text":"Wieviel Byte hat ein MD5 Hash?",
+        "answers": [
+            "16",
+            "64",
+            "128"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"Welche Methode hilft gegen das Ausführen von Schadcode?",
+        "answers": [
+            "ASL",
+            "ASLR",
+            "DEPP",
+            "WTF",
+            "W^Y"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"Was unterstützt die Ausnutzung von Blind SQL Injections?",
+        "answers": [
+            "Benchmarks",
+            "HTML",
+            "LEFT JOIN",
+            "Javascript"
+        ],
+        "solution": 0
+    },
+    {
+        "text":"In welchen Text wird folgender Binärcode übersetzt? 01101100 01000001 01010011 01010100 01110101 01101110 01101001 01100011 01101111 01110010 01101110 00100000",
+        "answers": [
+            "fASTulihorn",
+            "fASTtrollorn",
+            "lASTunicorn",
+            "lASTuniform",
+            "mASTuniform",
+            "mASTunicorn",
+            "gASTuniform",
+            "rASTulihoam"
+        ],
+        "solution": 2
+    },
+    {
+        "text":"Wie läuft der typische 3-Way Handshake ab?",
+        "answers": [
+            "SYN, ACK, FIN",
+            "SYN, SYN-ACK, ACK",
+            "SYN, ACK, ACK",
+            "SYN, KACK, AB"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"Wofür steht HTTP Status Code 418?",
+        "answers": [
+            "I am Batman",
+            "Prophecy not fulfilled",
+            "CDC Unavailable",
+            "I’m a Pothead",
+            "Hot sound",
+            "Policy not fulfilled",
+            "All your base are belong to us",
+            "Not found",
+            "I’m a teapot",
+            "I’m a T-Pot",
+            "Not bound",
+            "Undefined",
+            "Unavailable for legal reasons."
+        ],
+        "solution": 8
+    },
+    {
+        "text":"Welcher Dienst hört typischerweise auf Port 7/TCP?",
+        "answers": [
+            "IPv6 DHCP",
+            "WOL",
+            "LOL",
+            "SubSEVEN",
+            "ECHO",
+            "Date",
+            "Time",
+            "LOCKY Payment Handler",
+            "CERT",
+            "ROFL"
+        ],
+        "solution": 4
+    },
+    {
+        "text":"Setze diese Hexadezimal-Zahlenreihe fort: 1, 3, 6, A, F, ...",
+        "answers": [
+            "14",
+            "15",
+            "16",
+            "F1",
+            "1F"
+        ],
+        "solution": 1
+    },
+    {
+        "text":"Wofür steht die besondere IPv6 Adresse ff00::/8?",
+        "answers": [
+            "US Department of Defense",
+            "Unicast",
+            "Lokalhorst",
+            "Miracast",
+            "Multicast",
+            "Localhost",
+            "Net Neutrality",
+            "IANA",
+            "Remotehost",
+            "Telekom"
+        ],
+        "solution": 4
+    },
+    {
+        "text":"Was ist/bewirkt diese Folge von Zeichen? :(){ :|:&};:",
+        "answers": [
+            "Javascript Schleife",
+            "Brainfuck Kommentar",
+            "Smiley-Kombination in der Jugendsprache: „Da lacht doch keiner, Du Affe“",
+            "Bash Fork Bombe",
+            "Gültiger Regulärer Ausdruck (Perl-Regex) um Interpunktion zu filtern",
+            "Nichts"
+        ],
+        "solution": 3
+    },
+    {
+        "text":"Was ist ein Konkurrent vom Fahrdienstleister UBER?",
+        "answers": [
+            "Buber",
+            "(you)Tuber",
+            "Bieber",
+            "Rider",
+            "Twyx",
+            "BlablaCar",
+            "Lyft",
+            "Sprite",
+            "Gyft"
+        ],
+        "solution": 6
     }
-
 ]
