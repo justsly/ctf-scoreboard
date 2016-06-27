@@ -1,7 +1,9 @@
-from flask import render_template, Blueprint, request, redirect, flash, session
+import re
+
+from flask import render_template, Blueprint, request, redirect, flash
 from flask_login import login_user, login_required, current_user, logout_user
 from flask_bcrypt import Bcrypt
-from leaderboard.model import db, Member, Code, CodeRedeem
+from leaderboard.model import db, Member, Code, CodeRedeem, QuizQuestion, QuizAnswer
 
 frontend = Blueprint('frontend', __name__)
 bcrypt = Bcrypt()
@@ -10,10 +12,10 @@ bcrypt = Bcrypt()
 def index():
     """ show leaderboard """
     members = Member.query.order_by("points desc")
-
-    print(session)
-
-    return render_template('index.html', leaderboard=members)
+    qlen = 0
+    if not current_user.is_anonymous():
+        qlen = len(get_available_questions(current_user))
+    return render_template('index.html', leaderboard=members, qlen=qlen)
 
 @frontend.route('/login', methods=['GET', 'POST'])
 def login():
@@ -73,3 +75,67 @@ def redeem():
         return redirect('/')
 
     return render_template('redeem.html')
+
+@frontend.route('/quiz', methods=['GET', 'POST'])
+@login_required
+def quiz():
+    """ Show and save quiz questions """
+    flag_count = current_user.codesr.count()
+    limit = 10 + (flag_count * 10)
+    questions = get_available_questions(current_user, limit)
+
+    if request.method == 'POST':
+        for val in request.form:
+            ret = re.search('answer-question-([0-9]+)', val)
+            if ret is None:
+                continue
+
+            question_id = ret.group(1)
+
+            for q in questions:
+                if q.id == int(question_id):
+                    qa = QuizAnswer(q, current_user, request.form.get('answer-question-%s' % question_id))
+                    db.session.add(qa)
+                    db.session.commit()
+
+        flash('Saved.')
+        return redirect('/quiz')
+
+    return render_template('quiz.html', questions=questions, questions_len=len(questions))
+
+
+def get_available_questions(user, limit=10):
+    # always ensure same order
+    questions = QuizQuestion.query.order_by(QuizQuestion.id).limit(limit)
+
+    # get answers for user
+    answers = QuizAnswer.query.filter_by(member_id=user.id).all()
+
+    # only get IDs of answered questions
+    answers_ids = [answer.question_id for answer in answers]
+
+    # filter out answered questions
+    questions = [question for question in questions if not question.id in answers_ids]
+
+    return questions
+
+def get_quiz_points(user):
+    answers = QuizAnswer.query.filter_by(member_id=user.id).all()
+
+    points = 0
+
+    for answer in answers:
+        if answer.solution == answer.question.solution:
+            points += 20
+
+    return points
+
+def get_flag_points(user):
+    flags = CodeRedeem.query.filter_by(member_id=user.id).all()
+
+    points = 0
+
+    for flag in flags:
+        points += flag.code.points
+
+    return points

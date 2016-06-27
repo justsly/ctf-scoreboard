@@ -18,3 +18,11 @@ form.redeem {
 .flashes {
     padding:10px;
 }
+.question {
+    border:1px dashed #ddd;
+    padding:20px;
+    margin-bottom:20px;
+}
+.question ul {
+    list-style:none;
+}

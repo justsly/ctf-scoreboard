@@ -1,0 +1,23 @@
+[
+    {
+        "text":"Frage 1",
+        "answers": [
+            "Falsche Antwort 1",
+            "Falsche Antwort 2",
+            "Richtige Antwort 2",
+            "Falsche Antwort 3"
+        ],
+        "solution": 2
+    },
+    {
+        "text":"Frage 2",
+        "answers": [
+            "Falsche Antwort 1",
+            "Falsche Antwort 2",
+            "Richtige Antwort 2",
+            "Falsche Antwort 3"
+        ],
+        "solution": 2
+    }
+
+]

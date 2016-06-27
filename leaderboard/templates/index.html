@@ -17,7 +17,7 @@
                 <tr>
                     <th style="width:5%">.pos</th>
                     <th>.name</th>
-                    <th style="width:10%">.points</th>
+                    <th style="width:25%">.points (flags | quiz)</th>
                 </tr>
             </thead>
 
@@ -26,7 +26,7 @@
                 <tr>
                     <td>0x{{ '%02x'|format(loop.index) }}</td>
                     <td>{{ l.name }}</td>
-                    <td style="text-align:center">{{ l.points }}</td>
+                    <td style="text-align:left">{{ l.get_points() }} ({{ l.get_flag_points() }} | {{ l.get_quiz_points() }})</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -40,7 +40,7 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="pull-right">
             {% if session.user_id %}
-                <a href="/quiz">Start next quiz</a> |
+                <a href="/quiz">Start next quiz ({{qlen}})</a> |
                 <a href="/redeem">Redeem points</a> |
                 <a href="/logout">Logout</a>
             {% else %}

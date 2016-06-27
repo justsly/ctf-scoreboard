@@ -1,0 +1,39 @@
+
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Quiz time!</h2>
+        <a href="/">&laquo; back</a>
+
+        <p style="display:block;margin:20px 0;">Young padawan, there are <strong>{{questions_len}}</strong> new questions available. You can only submit them once, choice wisely.</p>
+
+        <form class="form-horizontal redeem" action="/quiz" method="post">
+
+          {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+          {% for question in questions %}
+          
+            <div class="question">
+                <h3>{{question.text}}</h3>
+                <ul>
+                    {% for answer in question.answers %}
+                        <li>
+                            <input type="radio" name="answer-question-{{question.id}}" value="{{loop.index0}}" {% if loop.index0 == 0 %}checked{% endif %}>
+                            {{answer}}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+          {% endfor %}
+
+          <button type="submit" name="submit" class="btn btn-lg btn-success pull-right">Submit answers</button>
+
+          <div style="clear:both;margin-bottom:150px;"></div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

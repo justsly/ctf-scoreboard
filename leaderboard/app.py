@@ -1,6 +1,9 @@
 import random
+import json
 import string
+import sys
 import click
+
 
 from flask import Flask, request, Response
 from flask_admin import Admin
@@ -9,7 +12,7 @@ from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 from werkzeug.exceptions import HTTPException
 
-from .model import db, Member, Code
+from .model import db, Member, Code, QuizQuestion, QuizAnswer
 from .views import frontend
 
 app = Flask(__name__)
@@ -40,6 +43,8 @@ class ModelViewProtected(ModelView):
 admin = Admin(app, name='leaderboard', template_mode='bootstrap3')
 admin.add_view(ModelViewProtected(Member, db.session))
 admin.add_view(ModelViewProtected(Code, db.session))
+admin.add_view(ModelViewProtected(QuizQuestion, db.session))
+admin.add_view(ModelViewProtected(QuizAnswer, db.session))
 
 app.register_blueprint(frontend)
 
@@ -87,3 +92,22 @@ def remove_user(username):
     Member.query.filter_by(name=username).delete()
     db.session.commit()
     print('Removed user ', username)
+
+@app.cli.command()
+@click.argument('filename')
+def load_questions(filename):
+    "Load questions from a JSON encoded file"
+
+    print('Importing questions from ', filename)
+
+    print('Progress: ')
+    with open(filename) as data_file:
+        data = json.load(data_file)
+
+        for q in data:
+            question = QuizQuestion(q['text'], q['answers'], q['solution'])
+            db.session.add(question)
+            sys.stdout.write('.')
+
+        db.session.commit()
+        print('\nImport finished.')
