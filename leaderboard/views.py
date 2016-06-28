@@ -19,6 +19,8 @@ def index():
     # sort by points
     members.sort(key=operator.methodcaller('get_points'))
 
+    members = reversed(members)
+
     qlen = 0
     try:
         if not current_user.is_anonymous():
