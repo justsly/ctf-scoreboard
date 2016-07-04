@@ -93,12 +93,44 @@ def buy_hint():
     """ Buy hints """
     challenges = [
         {
-            'name':'Challenge #1',
-            'hint':'Foo bar'
+            'name':'Secure Framework',
+            'hint':'Benutzername : Passwort : UID : GID : Info : Heimatverzeichnis : Shell'
         },
         {
-            'name':'Challenge #2',
-            'hint':'Foo bar'
+            'name':'Zero Impact Security',
+            'hint':'In dieser Aufgabe steckt viel Herzblut drin ;-) http://i.imgur.com/NScbv1N.png'
+        },
+        {
+            'name':'Catch me if you can',
+            'hint':'ROT13'
+        },
+        {
+            'name':'Simple Login',
+            'hint':'http://lmgtfy.com/?q=sql+injection'
+        },
+        {
+            'name':'Image Hub',
+            'hint':'Imagemagick? Imagetragick!'
+        },
+        {
+            'name':'20th Century Filereader',
+            'hint':'We are legion, we are _anonymous. The _path_ is the true destination.'
+        },
+        {
+            'name':'Tables of Facepalm',
+            'hint':'Use the source, Luke!'
+        },
+        {
+            'name':'H4x0r Chatwall',
+            'hint':'d2luZG93LmxvY2F0aW9uIGlzdCBkZWluIGZyZXVuZAo='
+        },
+        {
+            'name':'Pingcommander',
+            'hint':'https://www.gnu.org/software/bash/manual/bashref.html#Lists'
+        },
+        {
+            'name':'Blind Date',
+            'hint':'Order by? Union? More than one less than seven. Es gibt entweder 2, 3, 9 oder 18 Spalten.'
         }
     ]
 
