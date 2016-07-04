@@ -25,7 +25,12 @@
             {% for l in leaderboard %}
                 <tr>
                     <td>0x{{ '%02x'|format(loop.index) }}</td>
-                    <td>{{ l.name }}</td>
+                    <td>
+                        {{ l.name }} 
+                        {% for n in range(l.get_firstbloods()) %}
+                            <img src="/static/sprint.png" style="height:50%">
+                        {% endfor%}
+                    </td>
                     <td style="text-align:left"><span class="points-block">{{ l.get_points() }}</span>({{ l.get_flag_points() }} | {{ l.get_quiz_points() }} | -{{ l.points_handicap }})</td>
                 </tr>
             {% endfor %}

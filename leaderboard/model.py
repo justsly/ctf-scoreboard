@@ -5,12 +5,13 @@ db = SQLAlchemy()
 class Member(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(60))
+    password = db.Column(db.String(120))
 
     quiz_answers = db.relationship('QuizAnswer', back_populates='member')
     code_redeems = db.relationship('CodeRedeem', back_populates='member')
 
     points_handicap = db.Column(db.Integer, default=0)
+    points_bonus = db.Column(db.Integer, default=0)
 
     def __init__(self, name=None):
         self.name = name
@@ -51,8 +52,11 @@ class Member(db.Model):
 
         return points
 
+    def get_firstbloods(self):
+        return self.points_bonus // 20
+
     def get_points(self):
-        return self.get_quiz_points() + self.get_flag_points() - self.points_handicap
+        return self.get_quiz_points() + self.get_flag_points() +self.points_bonus - self.points_handicap
 
 class Code(db.Model):
     id = db.Column(db.Integer, primary_key=True)

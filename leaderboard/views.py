@@ -76,6 +76,10 @@ def redeem():
         if CodeRedeem.query.filter(CodeRedeem.member_id == m.id).filter(CodeRedeem.code_id == c.id).first():
             return render_template('redeem.html', error='Code already redeemed')
 
+        # firstblood
+        if CodeRedeem.query.filter_by(code_id=c.id).count() == 0:
+            current_user.points_bonus += 20
+
         cr = CodeRedeem(c, m)
         db.session.add(cr)
 
