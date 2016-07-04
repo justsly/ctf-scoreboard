@@ -15,7 +15,7 @@
                 <ul>
                     {% for a2 in answer.question.answers %}
                         <li>
-                            <span class="{% if answer.solution == loop.index0  %}bold{% endif %} {% if answer.question.solution == loop.index0  %}answer-correct{% endif %}">{{a2}}</span>
+                            <span class="{% if answer.question.solution == loop.index0  %}answer-correct bold{% endif %}">{{a2}} {% if answer.solution == loop.index0  %}<span class="bold">&laquo;&laquo;&laquo; your answer</span>{% endif %}</span>
                         </li>
                     {% endfor %}
                 </ul>
