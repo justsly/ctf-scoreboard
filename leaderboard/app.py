@@ -134,3 +134,22 @@ def load_questions(filename):
 
         db.session.commit()
         print('\nImport finished.')
+
+@app.cli.command()
+@click.argument('filename')
+def load_codes(filename):
+    "Load codes from a JSON encoded file"
+
+    print('Importing codes from ', filename)
+
+    print('Progress: ')
+    with open(filename) as data_file:
+        data = json.load(data_file)
+
+        for q in data:
+            c = Code(q['code'], q['points'])
+            db.session.add(c)
+            sys.stdout.write('.')
+
+        db.session.commit()
+        print('\nImport finished.')
