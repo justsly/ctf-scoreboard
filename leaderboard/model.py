@@ -56,7 +56,7 @@ class Member(db.Model):
 
 class Code(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    code = db.Column(db.String(20), unique=True)
+    code = db.Column(db.String(56), unique=True)
     points = db.Column(db.Integer)
 
     code_redeems = db.relationship('CodeRedeem', back_populates='code', cascade='all, delete-orphan')
