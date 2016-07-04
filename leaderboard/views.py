@@ -130,7 +130,7 @@ def buy_hint():
         },
         {
             'name':'Blind Date',
-            'hint':'Order by? Union? More than one less than seven. Es gibt entweder 2, 3, 9 oder 18 Spalten.'
+            'hint':'Order by? Union? More than one less than seven.'
         }
     ]
 
