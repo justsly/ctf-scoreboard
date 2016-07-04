@@ -26,7 +26,7 @@
                 <tr>
                     <td>0x{{ '%02x'|format(loop.index) }}</td>
                     <td>{{ l.name }}</td>
-                    <td style="text-align:left">{{ l.get_points() }} ({{ l.get_flag_points() }} | {{ l.get_quiz_points() }} | -{{ l.points_handicap }})</td>
+                    <td style="text-align:left"><span class="points-block">{{ l.get_points() }}</span>({{ l.get_flag_points() }} | {{ l.get_quiz_points() }} | -{{ l.points_handicap }})</td>
                 </tr>
             {% endfor %}
             </tbody>
